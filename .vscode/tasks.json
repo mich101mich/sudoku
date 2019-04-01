@@ -1,0 +1,42 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558 
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "cargo build",
+			"command": "cargo",
+			"args": [
+				"build",
+				"--release",
+				"--target",
+				"wasm32-unknown-unknown"
+			],
+			"problemMatcher": [
+				"$rustc"
+			]
+		},
+		{
+			"type": "shell",
+			"label": "bindgen",
+			"command": "wasm-bindgen",
+			"args": [
+				"target/wasm32-unknown-unknown/release/${workspaceFolderBasename}.wasm",
+				"--out-dir",
+				"target/bindgen"
+			],
+			"dependsOn": "cargo build"
+		},
+		{
+			"type": "shell",
+			"label": "webpack",
+			"command": "webpack",
+			"dependsOn": "bindgen",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}

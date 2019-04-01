@@ -1,0 +1,38 @@
+
+table {
+	table-layout: fixed;
+	border: 3px solid black;
+	width: 9cm;
+	height: 9cm;
+    border-collapse: collapse;
+}
+
+tr, td {
+	width: 1cm;
+	height: 1cm;
+	text-align: center;
+	border: 1px solid black;
+}
+
+input[type="range"] {
+	width: 5cm;
+	height: 1em;
+}
+
+.input {
+	width: 0.8cm;
+	height: 0.8cm;
+	text-align: center;
+	-moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+body {
+    margin-left: 0pt;
+}

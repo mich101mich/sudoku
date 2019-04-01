@@ -1,0 +1,20 @@
+{
+  "name": "sudoku",
+  "version": "1.0.0",
+  "description": "A WebAssembly Sudoku application",
+  "main": "js/sudoku.js",
+  "scripts": {
+    "watch": "cargo watch -s \"webpack\" -w target/bindgen/*"
+  },
+  "author": "mich101mich",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mich101mich/sudoku"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  }
+}
