@@ -1,3 +1,5 @@
+use Point;
+
 #[derive(Clone)]
 pub struct ColIter {
 	x: u8,
@@ -9,12 +11,12 @@ impl ColIter {
 	}
 }
 impl Iterator for ColIter {
-	type Item = (u8, u8);
-	fn next(&mut self) -> Option<(u8, u8)> {
+	type Item = Point;
+	fn next(&mut self) -> Option<Point> {
 		if self.i == 9 {
 			return None;
 		}
-		let ret = (self.x, self.i);
+		let ret = Point::new(self.x, self.i);
 		self.i += 1;
 		Some(ret)
 	}
@@ -24,7 +26,7 @@ impl Iterator for ColIter {
 fn test_col_iter_1() {
 	let mut iter = ColIter::at(0);
 	for y in 0..9 {
-		assert_eq!(iter.next(), Some((0, y)));
+		assert_eq!(iter.next(), Some(Point { x: 0, y }));
 	}
 	assert_eq!(iter.next(), None);
 	assert_eq!(iter.next(), None);
@@ -34,7 +36,7 @@ fn test_col_iter_1() {
 fn test_col_iter_2() {
 	let mut iter = ColIter::at(5);
 	for y in 0..9 {
-		assert_eq!(iter.next(), Some((5, y)));
+		assert_eq!(iter.next(), Some(Point { x: 5, y }));
 	}
 	assert_eq!(iter.next(), None);
 	assert_eq!(iter.next(), None);
@@ -44,7 +46,7 @@ fn test_col_iter_2() {
 fn test_col_all_iter() {
 	let mut been_there = [[0; 9]; 9];
 	for cx in 0..9 {
-		for (x, y) in ColIter::at(cx) {
+		for Point { x, y } in ColIter::at(cx) {
 			been_there[x as usize][y as usize] += 1;
 		}
 	}
