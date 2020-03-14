@@ -4,7 +4,8 @@
   "description": "A WebAssembly Sudoku application",
   "main": "js/sudoku.js",
   "scripts": {
-    "watch": "cargo watch -s \"webpack\" -w target/bindgen/*"
+    "watch": "cargo watch -s \"webpack\" -w target/bindgen/*",
+    "server": "webpack-dev-server"
   },
   "author": "mich101mich",
   "repository": {
@@ -13,8 +14,13 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "ts-loader": "6.2.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "store": "^2.0.12",
+    "typescript": "3.4.3"
   }
 }

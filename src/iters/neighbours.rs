@@ -1,6 +1,6 @@
-use ColIter;
-use RowIter;
-use BlockIter;
+use super::ColIter;
+use super::RowIter;
+use super::BlockIter;
 
 use std::iter::Map;
 use std::ops::Range;

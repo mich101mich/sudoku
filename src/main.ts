@@ -39,7 +39,7 @@ window.addEventListener("load", (event) => {
 		slider.value = data.difficulty.toString();
 	}
 
-	fetch("lib.wasm")
+	fetch("dist/bundle.wasm")
 		.then(file => file.arrayBuffer())
 		// @ts-ignore
 		.then(buffer => WebAssembly.instantiate(buffer, {}))

@@ -19,12 +19,11 @@
 		},
 		{
 			"type": "shell",
-			"label": "bindgen",
-			"command": "wasm-bindgen",
+			"label": "wasm-gc",
+			"command": "wasm-gc",
 			"args": [
 				"target/wasm32-unknown-unknown/release/${workspaceFolderBasename}.wasm",
-				"--out-dir",
-				"target/bindgen"
+				"dist/bundle.wasm"
 			],
 			"dependsOn": "cargo build"
 		},
@@ -32,7 +31,7 @@
 			"type": "shell",
 			"label": "webpack",
 			"command": "webpack",
-			"dependsOn": "bindgen",
+			"dependsOn": "wasm-gc",
 			"group": {
 				"kind": "build",
 				"isDefault": true

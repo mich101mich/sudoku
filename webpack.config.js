@@ -1,16 +1,19 @@
-const path = require('path');
-
 module.exports = {
-	entry: './src/index.js',
+	entry: './src/main.ts',
 	output: {
-		path: path.resolve(__dirname),
-		filename: 'dist/bundle.js',
-		chunkFilename: 'dist/chunk.bundle.js',
-		webassemblyModuleFilename: 'dist/bundle.wasm'
+		filename: 'bundle.js'
 	},
-	mode: 'production',
-	optimization: {
-		namedModules: true,
-		namedChunks: true,
-	}
+	module: {
+		rules: [
+			{
+				test: /\.tsx?$/,
+				use: 'ts-loader',
+				exclude: /node_modules/
+			}
+		]
+	},
+	resolve: {
+		extensions: ['.tsx', '.ts', '.js']
+	},
+	mode: 'production'
 };

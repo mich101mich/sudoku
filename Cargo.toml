@@ -8,22 +8,5 @@ edition = "2018"
 crate-type = ["cdylib"]
 
 [dependencies]
-wasm-bindgen = "0.2.40"
-smithy = { version = "0.0.2", features = [
-  "mouse-events",
-  "input-events",
-]}
-
-web-sys = { version = "0.3.17", features = [
-  "Element",
-  "Location",
-
-  # elements
-  "HtmlInputElement",
-  "InputEvent",
-]}
-js-sys = "0.3.17"
-rand = { version = "0.6.5", features = [
-  "wasm-bindgen",
-]}
+rand = { version = "0.6.5" }
 
