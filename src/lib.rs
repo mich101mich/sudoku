@@ -1,14 +1,14 @@
 #![allow(unused, clippy::missing_safety_doc)]
 
-extern crate rand;
-use rand::{ChaChaRng, Rng, SeedableRng};
+use rand::Rng;
+use rand_chacha::{rand_core::SeedableRng, ChaChaRng};
 
 use std::collections::HashSet;
 
 mod iters;
 use iters::*;
 
-const ALL_POSSIBLE: u16 = 0b1111111110;
+const ALL_POSSIBLE: u16 = 0b11_1111_1110;
 
 static mut SUDOKU: [[u8; 9]; 9] = [[0; 9]; 9];
 static mut POSSIBLE: [[u16; 9]; 9] = [[ALL_POSSIBLE; 9]; 9];
@@ -75,7 +75,7 @@ pub unsafe fn get_seed(n: usize) -> u8 {
 
 #[no_mangle]
 pub unsafe fn init() {
-	let mut rng = rand::ChaChaRng::from_seed(SEED);
+	let mut rng = ChaChaRng::from_seed(SEED);
 
 	SUDOKU = [[0; 9]; 9];
 	POSSIBLE = [[ALL_POSSIBLE; 9]; 9];
@@ -127,7 +127,7 @@ pub unsafe fn init() {
 						continue;
 					}
 					let values = get_values(x, y, &my_points);
-					v = if values.len() == 0 {
+					v = if values.is_empty() {
 						continue;
 					} else if values.len() == 1 {
 						values[0]
@@ -144,7 +144,7 @@ pub unsafe fn init() {
 							continue;
 						}
 						let values = get_values(tx, ty, &my_points);
-						if values.len() == 0 {
+						if values.is_empty() {
 							continue;
 						}
 						if tries > values.len() {
@@ -311,7 +311,7 @@ pub unsafe fn solve() -> bool {
 
 #[no_mangle]
 pub unsafe fn reduce(difficulty: i32) {
-	let mut rng = rand::ChaChaRng::from_seed(SEED);
+	let mut rng = ChaChaRng::from_seed(SEED);
 	rng.gen_range(0, 5);
 
 	let mut removed = vec![];
