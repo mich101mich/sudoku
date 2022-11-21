@@ -1,12 +1,12 @@
 #[derive(Clone)]
 pub struct BlockIter {
-	x: u8,
-	y: u8,
-	dx: u8,
-	dy: u8,
+	x: usize,
+	y: usize,
+	dx: usize,
+	dy: usize,
 }
 impl BlockIter {
-	pub fn at(x: u8, y: u8) -> BlockIter {
+	pub fn at(x: usize, y: usize) -> BlockIter {
 		BlockIter {
 			x: x / 3 * 3,
 			y: y / 3 * 3,
@@ -16,8 +16,8 @@ impl BlockIter {
 	}
 }
 impl Iterator for BlockIter {
-	type Item = (u8, u8);
-	fn next(&mut self) -> Option<(u8, u8)> {
+	type Item = (usize, usize);
+	fn next(&mut self) -> Option<(usize, usize)> {
 		if self.dy == 3 {
 			return None;
 		}

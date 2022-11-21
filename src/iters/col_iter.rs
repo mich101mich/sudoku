@@ -1,16 +1,16 @@
 #[derive(Clone)]
 pub struct ColIter {
-	x: u8,
-	i: u8,
+	x: usize,
+	i: usize,
 }
 impl ColIter {
-	pub fn at(x: u8) -> ColIter {
+	pub fn at(x: usize) -> ColIter {
 		ColIter { x, i: 0 }
 	}
 }
 impl Iterator for ColIter {
-	type Item = (u8, u8);
-	fn next(&mut self) -> Option<(u8, u8)> {
+	type Item = (usize, usize);
+	fn next(&mut self) -> Option<(usize, usize)> {
 		if self.i == 9 {
 			return None;
 		}

@@ -2,10 +2,9 @@
   "name": "sudoku",
   "version": "1.0.0",
   "description": "A WebAssembly Sudoku application",
-  "main": "js/sudoku.js",
   "scripts": {
-    "watch": "cargo watch -s \"webpack\" -w target/bindgen/*",
-    "server": "webpack-dev-server"
+    "build": "rimraf docs pkg && webpack",
+    "server": "rimraf docs pkg && webpack-dev-server --open"
   },
   "author": "mich101mich",
   "repository": {
@@ -14,13 +13,17 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "ts-loader": "6.2.1",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.2.1"
+    "@wasm-tool/wasm-pack-plugin": "^1.6.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^9.4.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
     "store": "^2.0.12",
-    "typescript": "3.4.3"
+    "@types/store": "^2.0.2",
+    "typescript": "^4.9.3"
   }
 }

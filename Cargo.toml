@@ -2,11 +2,18 @@
 name = "sudoku"
 version = "0.1.0"
 authors = ["mich101mich <mich101mich@gmail.com>"]
-edition = "2018"
+edition = "2021"
 
 [lib]
 crate-type = ["cdylib"]
 
+[profile.release]
+lto = true
+
 [dependencies]
-rand = { version = "0.7.3" }
-rand_chacha = "0.2.2"
+rand = "0.8.5"
+getrandom = { version = "0.2", features = ["js"] }
+wasm-bindgen = "0.2.83"
+wee_alloc = "0.4.5"
+web-sys = { version = "0.3.60", features = ["console"] }
+console_error_panic_hook = "0.1.5"

@@ -1,0 +1,29 @@
+
+table {
+	table-layout: fixed;
+	border: 3px solid black;
+	width: 9cm;
+	height: 9cm;
+    border-collapse: collapse;
+}
+
+tr, td {
+	width: 1cm;
+	height: 1cm;
+	text-align: center;
+	border: 1px solid black;
+}
+
+td[contenteditable=true] {
+	background-color: #f0f0f0;
+	line-height: 1cm;
+}
+
+input[type="range"] {
+	width: 5cm;
+	height: 1em;
+}
+
+body {
+    margin-left: 0pt;
+}

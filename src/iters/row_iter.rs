@@ -1,16 +1,16 @@
 #[derive(Clone)]
 pub struct RowIter {
-	y: u8,
-	i: u8,
+	y: usize,
+	i: usize,
 }
 impl RowIter {
-	pub fn at(y: u8) -> RowIter {
+	pub fn at(y: usize) -> RowIter {
 		RowIter { y, i: 0 }
 	}
 }
 impl Iterator for RowIter {
-	type Item = (u8, u8);
-	fn next(&mut self) -> Option<(u8, u8)> {
+	type Item = (usize, usize);
+	fn next(&mut self) -> Option<(usize, usize)> {
 		if self.i == 9 {
 			return None;
 		}
