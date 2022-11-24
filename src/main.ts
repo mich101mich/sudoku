@@ -62,13 +62,9 @@ function gen(loaded: boolean = false) {
         data.placed = [];
     }
 
-    while (true) {
-        Wasm.init(new Uint32Array(data.seed));
-        if (Wasm.count_remaining() > 0) {
-            genSeed();
-        } else {
-            break;
-        }
+    Wasm.init(new Uint32Array(data.seed));
+    if (Wasm.count_remaining() > 0) {
+        throw new Error("Unable to generate Sudoku");
     }
     save();
 
@@ -87,7 +83,9 @@ function gen(loaded: boolean = false) {
         }
     }
 
-    Wasm.solve();
+    if (!Wasm.solve()) {
+        throw new Error("Sudoku is unsolvable??");
+    }
 
     if (loaded && data.placed.length > 0) {
         let index = 0;
